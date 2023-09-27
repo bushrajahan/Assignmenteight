@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Donation = () => {
+  
+  const seletedItem = JSON.parse(localStorage.getItem('favorites'));
+  console.log(seletedItem)
   return (
     <div>
-      <h2>hello</h2>
+       {
+        seletedItem?.map(item =>
+          <h1>Hllow world</h1>
+        )
+       }
     </div>
   );
 };

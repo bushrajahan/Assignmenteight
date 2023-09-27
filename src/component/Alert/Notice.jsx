@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Notice = () => {
   const [one,setOne] = useState([]);
@@ -18,6 +19,7 @@ const Notice = () => {
   const cards = one.data;
   const selectedId = cards?.find((card) => card.id === machId);
   console.log(selectedId);
+  const notify = () => toast("Thank you for your kindness!");
   // const {picture,catagory,card_bg,description,price,text,text_button_bg,title} = selectedId;
   return (
     <div>
@@ -43,9 +45,10 @@ const Notice = () => {
               "
               
             >
-                <button style={{background:selectedId?.text}}  className="text-white p-2 m-4 opacity-100 absolute bottom-0" >
+                <button onClick={notify} style={{background:selectedId?.text}}  className="text-white p-2 m-4 opacity-100 absolute bottom-0" >
                 Donate:{selectedId?.price}
              </button>
+             <ToastContainer />
             </div>
  
            </div>
@@ -61,7 +64,9 @@ const Notice = () => {
           <p className="card-title" >
             {selectedId?.description}
           </p>
+          
         </div>
+        
       </div>
     </div>
   );
