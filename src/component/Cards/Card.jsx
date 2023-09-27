@@ -1,6 +1,9 @@
 
 import { Link, useNavigate } from "react-router-dom";
 import Notice from "../Alert/Notice";
+export const handleCard = () =>{
+     
+}
 
 const Card = ({ card }) => {
   const {
@@ -14,6 +17,7 @@ const Card = ({ card }) => {
     text_button_bg,
     title,
   } = card;
+  
   
   const navigate = useNavigate()
 const handleClick = ( card ) => {
