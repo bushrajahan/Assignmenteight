@@ -6,8 +6,8 @@ import Card from '../../component/Cards/Card';
 import { data } from 'autoprefixer';
 const Home = (value) => {
   const [cards,setCards] = useState([]);
-
-
+  const [searchInput, setSearchInput] = useState('')
+  // const [filteredData, setFilteredData] = useState([]);
   useEffect(()=>{
     fetch('data.json')
     .then(res => res.json())
@@ -39,8 +39,9 @@ const Home = (value) => {
                 <input
                   type="text"
                   placeholder="Search here...."
-                  className="input input-bordered lg:w-11/12"
-                
+                  className="input text-black input-bordered lg:w-11/12"
+                  value={searchInput}
+                  onChange={(e) => setSearchInput(e.target.value)}
                  />
                 <span className="bg-red-600 text-white"  >Search</span>
               </label>
@@ -52,16 +53,15 @@ const Home = (value) => {
       <Outlet></Outlet>
       
       <div className='grid gap-4 grid-cols-1 lg:grid-cols-4 md:grid-cols-2 '>
-        {
-          data?.map(card =>
-          
-          
-                 <Card card={card} key={card.id} ></Card>
-              
-           
-          
-            )
-        }
+      {
+  data
+    .filter((card) =>
+      card.category.toLowerCase().includes(searchInput.toLowerCase())
+    )
+    .map((card) => (
+      <Card card={card} key={card.id}></Card>
+    ))
+}
       </div>
     </div>
   );
