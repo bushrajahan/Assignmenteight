@@ -3,15 +3,12 @@ import Notice from "../../Alert/Notice";
 import Card from "../../Cards/Card";
 import { Link } from "react-router-dom";
 import { key } from "localforage";
-export const handleClick = ( card ) => {
-   
-      <Link to={`/card/:${card.id}`} key={card.id}>
-      </Link>
-      return <Notice card={card.id}></Notice>
-}
+  
+
+
 const Banner = () => {
 
-  
+
   return (
     <div>
       <div

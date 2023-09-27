@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Banner from '../../component/Navbar/Banner/Banner';
 import { Link, Outlet, useLoaderData } from 'react-router-dom';
 import Card from '../../component/Cards/Card';
+import { data } from 'autoprefixer';
 
 const Home = () => {
-  const data = useLoaderData();
-  const cards = data.data;
- 
-  // console.log(cards)
+  const [cards,setCards] = useState([]);
+  useEffect(()=>{
+    fetch('data.json')
+    .then(res => res.json())
+    .then(data => setCards(data))
+  },[])
+   console.log(cards.data)
+   const data = cards.data;
   return (
 
     <div>
@@ -16,7 +21,7 @@ const Home = () => {
       
       <div className='grid gap-4 grid-cols-1 lg:grid-cols-4 md:grid-cols-2 '>
         {
-          cards?.map(card =>
+          data?.map(card =>
           
           
                  <Card card={card} key={card.id} ></Card>

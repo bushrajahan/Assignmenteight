@@ -1,6 +1,7 @@
-import React from "react";
-import { handleClick } from "../Navbar/Banner/Banner";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Notice from "../Alert/Notice";
+
 const Card = ({ card }) => {
   const {
     card_bg,
@@ -13,9 +14,16 @@ const Card = ({ card }) => {
     text_button_bg,
     title,
   } = card;
+  
+  const navigate = useNavigate()
+const handleClick = ( card ) => {
+  
+  navigate(`/card/${card.id}`)
+  
+}
 
   return (
-         <Link to={`/card/${id}`}>
+    <Link to={`/card/${id}`}>
              <div onClick={() => handleClick(card)}>
       <div className={`card shadow-xl `} style={{ background: card_bg }}>
         <figure>
@@ -34,7 +42,7 @@ const Card = ({ card }) => {
         </div>
       </div>
     </div>
-         
+      
          </Link>
   );
 };

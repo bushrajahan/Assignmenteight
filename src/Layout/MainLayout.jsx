@@ -4,12 +4,15 @@ import Home from './Home/Home';
 import Donation from './Dontaion/Donation';
 import Navbar from '../component/Navbar/Navbar';
 
+
 const MainLayout = () => {
   return (
-    <div>
+   
+     <div>
       <Navbar></Navbar>
       <Outlet></Outlet>
     </div>
+   
   );
 };
 
