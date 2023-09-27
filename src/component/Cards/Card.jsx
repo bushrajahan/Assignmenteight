@@ -17,7 +17,30 @@ const Card = ({ card }) => {
   
   const navigate = useNavigate()
 const handleClick = ( card ) => {
+  const addedFavoritesArray = [];
+  const favoriteItems = JSON.parse(localStorage.getItem("favorites"));
+
+  //jokhon kisu nai tokhon e if vitor dhukba
+  if (!favoriteItems) {
+    addedFavoritesArray.push(card);
+    localStorage.setItem("favorites", JSON.stringify(addedFavoritesArray));
+  } 
   
+  else {
+
+
+    const isExits = favoriteItems.find((card) => card.id === id);
+
+    
+    if (!isExits) {
+
+      addedFavoritesArray.push(...favoriteItems, card);
+      localStorage.setItem("favorites", JSON.stringify(addedFavoritesArray));
+     
+    } 
+
+    
+  }
   navigate(`/card/${card.id}`)
   
 }

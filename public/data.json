@@ -95,6 +95,54 @@
       "text": "#0052FF",
       "description": "Clean water for children",
       "price": 290
+    },
+    {
+      "id": 9,
+      "picture": "https://i.ibb.co/JKSNDBV/Food.png",
+      "title": "Food",
+      "category": "Food",
+      "category_bg": "#F8714726",
+      "card_bg": "#F8714726",
+      "text_button_bg": "#F8714726",
+      "text": "#F87147",
+      "description": "Better Food for Everyone.",
+      "price": 290
+    },
+    {
+      "id": 10,
+      "picture": "https://i.ibb.co/LY0XYnj/Health.png",
+      "title": "Clothing",
+      "category": "Clothing",
+      "category_bg": "#F8714726",
+      "card_bg": "#F8714726",
+      "text_button_bg": "#F8714726",
+      "text": "#79C23F",
+      "description": "Used Clothing Drive",
+      "price": 290
+    },
+    {
+      "id": 11,
+      "picture": "https://i.ibb.co/G3fcLQC/Education.png",
+      "title": "Education",
+      "category": "Education",
+      "category_bg": " #FF444A33",
+      "card_bg": " #FF444A33",
+      "text_button_bg": " #FF444A33",
+      "text": "#FF444A",
+      "description": "Good education",
+      "price": 290
+    },
+    {
+      "id": 12,
+      "picture": "https://i.ibb.co/dDCfd9H/Clothing.png",
+      "title": "Health",
+      "category": "Health",
+      "category_bg": "#0052ff26",
+      "card_bg": "#0052ff26",
+      "text_button_bg": "#0052FF",
+      "text": "#0052FF",
+      "description": "Clean water for children",
+      "price": 290
     }
   ]
 }

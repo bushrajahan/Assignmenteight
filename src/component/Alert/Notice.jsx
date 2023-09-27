@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 
+
 const Notice = () => {
+  const [one,setOne] = useState([]);
+  useEffect(()=>{
+    fetch('../../../public/data.json')
+    .then(res => res.json())
+    .then(data =>setOne(data))
+  },[])
+
   const { id } = useParams();
   console.log(id);
   const machId = parseInt(id);
-  const data = useLoaderData();
-  console.log(data);
-  const cards = data.data;
+  // const data = useLoaderData();
+  // console.log(data);
+  const cards = one.data;
   const selectedId = cards?.find((card) => card.id === machId);
   console.log(selectedId);
   // const {picture,catagory,card_bg,description,price,text,text_button_bg,title} = selectedId;
@@ -21,21 +29,27 @@ const Notice = () => {
               alt="your-image-description"
               
             />
-            <div
+           
+           <div
               style={{
                 position: "absolute",
                 bottom: 0,
                 left: 0,
                 width: "100%",
-                height: "50px",
-                backgroundColor: "black",
-                opacity:"50%"
-              }}
+                height: "100px",
+                
+              
+              }} className="bg-gray-900 bg-opacity-50
+              "
               
             >
-              <button className="bg-red-600 text-white opacity-100">Donate:{selectedId?.price}</button>
+                <button style={{background:selectedId?.text}}  className="text-white p-2 m-4 opacity-100 absolute bottom-0" >
+                Donate:{selectedId?.price}
+             </button>
             </div>
-          </div>
+ 
+           </div>
+         
         </figure>
         <div className="card-body lg:mx-24">
           <h2
@@ -44,7 +58,7 @@ const Notice = () => {
           >
             {selectedId?.title}
           </h2>
-          <p className="card-title" style={{ color: selectedId?.text }}>
+          <p className="card-title" >
             {selectedId?.description}
           </p>
         </div>
