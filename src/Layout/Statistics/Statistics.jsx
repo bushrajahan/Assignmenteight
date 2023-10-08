@@ -3,10 +3,18 @@ import { PieChart, Pie, Cell, Tooltip, Legend, Label, ResponsiveContainer } from
 
 const Statistics = () => {
   const seletedItem = JSON.parse(localStorage.getItem('favorites'));
-  const y = parseInt(seletedItem.length);
+  const y = parseInt(seletedItem?.length);
   const total = 12;
-  const selectedPercentage = ((y / total) * 100);
-  const unselectedPercentage = (((total - y) / total) * 100);
+  let selectedPercentage, unselectedPercentage;
+  
+  if (y > 0) {
+    selectedPercentage = ((y / total) * 100);
+    unselectedPercentage = (((total - y) / total) * 100);
+  } else {
+    selectedPercentage = 0;
+    unselectedPercentage = 100;
+  }
+
   const value1 = selectedPercentage.toFixed(2);
   const value2 = unselectedPercentage.toFixed(2);
 
@@ -29,7 +37,7 @@ const Statistics = () => {
             labelLine={false}
             label={(entry) => entry.name}
           >
-            {data01.map((entry, index) => (
+            {data01?.map((entry, index) => (
               <Cell key={`cell-${index}`} fill={['#FF444A', '#00C49F'][index]} />
             ))}
           </Pie>
@@ -37,7 +45,7 @@ const Statistics = () => {
           <Legend verticalAlign="bottom" height={36} />
           <Label content="" position="center">
             <tspan x="0" dy="-20">
-              {`${selectedPercentage.toFixed(2)}%`}
+              {`${value1}%`}
             </tspan>
             <tspan x="0" dy="20">
               {`Total Donation: ${y}`}

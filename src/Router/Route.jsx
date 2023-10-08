@@ -1,12 +1,14 @@
 import React from 'react';
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, useLoaderData } from 'react-router-dom';
 import MainLayout from '../Layout/MainLayout';
 import Home from '../Layout/Home/Home';
 import Statistics from '../Layout/Statistics/Statistics';
 import Donation from '../Layout/Dontaion/Donation';
 import Card from '../component/Cards/Card';
-import Notice from '../component/Alert/Notice';
+
 import ErrorPage from './ErrorPage';
+import { Result } from 'postcss';
+import Hello from '../Layout/result/Hello';
 const Route = createBrowserRouter([
 
   {
@@ -29,7 +31,8 @@ const Route = createBrowserRouter([
       },
       {
         path:'/card/:id',
-        element:<Notice></Notice>,
+        element:<Hello></Hello>,
+        loader:()=>fetch('/data.json')
    
       }
     ]

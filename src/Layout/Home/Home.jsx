@@ -1,69 +1,65 @@
+import React, { useEffect, useState } from "react";
+import Card from "../../component/Cards/Card";
 
-import React, { useEffect, useState } from 'react';
-// import Banner from '../../component/Navbar/Banner/Banner';
-import { Link, Outlet, useLoaderData } from 'react-router-dom';
-import Card from '../../component/Cards/Card';
-import { data } from 'autoprefixer';
-const Home = (value) => {
-  const [cards,setCards] = useState([]);
-  const [searchInput, setSearchInput] = useState('')
-  // const [filteredData, setFilteredData] = useState([]);
-  useEffect(()=>{
-    fetch('data.json')
-    .then(res => res.json())
-    .then(data => setCards(data))
-  },[])
-   console.log(cards.data)
-   const data = cards.data;
-   console.log(value)
+const Home = () => {
+  const [cards, setCards] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
+  const [filteredData, setFilteredData] = useState([]);
+
+  useEffect(() => {
+    fetch("/data.json")
+      .then((res) => res.json())
+      .then((data) => setCards(data));
+  }, []);
+
+  const handleSearch = () => {
+    const searchTerm = searchInput?.toLowerCase();
+
+    // Filter the data based on the search term
+    const filtered = cards.data?.filter((card) =>
+      card?.category.toLowerCase().includes(searchTerm)
+    );
+
+    // Update the filteredData state with the search results
+    setFilteredData(filtered);
+  };
 
   return (
-
     <div>
-       <div>
-      <div
-        className="hero min-h-screen"
-        style={{
-          backgroundImage: "url(https://i.ibb.co/kxq5CkC/pp.png)",
-        }}
-      >
-        <div className="hero-overlay bg-opacity-90 bg-white"></div>
-        <div className="hero-content text-center text-neutral-content">
-          <div className="max-w-md">
-            <h1 className="mb-5 text-4xl md:mr-12 md:whitespace-nowrap font-bold text-black">
-              I Grow By Helping People In Need
-            </h1>
-            <div className="form-control  md:ml-24" >
-          
-              <label className="input-group">
-                <input
-                  type="text"
-                  placeholder="Search here...."
-                  className="input text-black input-bordered lg:w-11/12"
-                  value={searchInput}
-                  onChange={(e) => setSearchInput(e.target.value)}
-                 />
-                <span className="bg-red-600 text-white"  >Search</span>
-              </label>
-            </div>
+      <div>
+        <div
+          className="hero min-h-screen "
+          style={{
+            backgroundImage: "url(https://i.ibb.co/kxq5CkC/pp.png)",
+            opacity: 0.5,
+          }}
+        >
+          {/* ... Hero content ... */}
+          <div className="form-control md:ml-24 " style={{ opacity: 1 }}>
+            <label className="input-group">
+              <input
+                type="text"
+                placeholder="Search here...."
+                className="input input-bordered lg:w-11/12 text-black"
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
+              />
+              <span className="bg-red-600 text-white" onClick={handleSearch}>
+                Search
+              </span>
+            </label>
           </div>
         </div>
       </div>
-    </div>
-      <Outlet></Outlet>
-      
-      <div className='grid gap-4 grid-cols-1 lg:grid-cols-4 md:grid-cols-2 '>
-      {
-  data
-    .filter((card) =>
-      card.category.toLowerCase().includes(searchInput.toLowerCase())
-    )
-    .map((card) => (
-      <Card card={card} key={card.id}></Card>
-    ))
-}
+
+      {/* Display cards based on the search result */}
+      <div className="grid gap-4 grid-cols-1 lg:grid-cols-4 md:grid-cols-2">
+        {(filteredData?.length > 0 ? filteredData : cards.data)?.map((card) => (
+          <Card card={card} key={card.id} />
+        ))}
       </div>
     </div>
   );
 };
+
 export default Home;

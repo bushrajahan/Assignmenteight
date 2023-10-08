@@ -2,4 +2,4 @@
 
 
 * The website has Donation page where all donation that are done shown here
-* The website has one statistics page where all the statistcs are shown
+* The website has one statistics page where all the statistcs are shown related to the dontation

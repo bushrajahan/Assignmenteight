@@ -1,6 +1,6 @@
 
 import { Link, useNavigate } from "react-router-dom";
-import Notice from "../Alert/Notice";
+// import Notice from "../Alert/Notice";
 export const handleCard = () =>{
      
 }
@@ -22,24 +22,24 @@ const Card = ({ card }) => {
   const navigate = useNavigate()
 const handleClick = ( card ) => {
   const addedFavoritesArray = [];
-  const favoriteItems = JSON.parse(localStorage.getItem("favorites"));
+  const favoriteItems = JSON?.parse(localStorage?.getItem("favorites"));
 
   //jokhon kisu nai tokhon e if vitor dhukba
   if (!favoriteItems) {
     addedFavoritesArray.push(card);
-    localStorage.setItem("favorites", JSON.stringify(addedFavoritesArray));
+    localStorage?.setItem("favorites", JSON?.stringify(addedFavoritesArray));
   } 
   
   else {
 
 
-    const isExits = favoriteItems.find((card) => card.id === id);
+    const isExits = favoriteItems?.find((card) => card.id === id);
 
     
     if (!isExits) {
 
-      addedFavoritesArray.push(...favoriteItems, card);
-      localStorage.setItem("favorites", JSON.stringify(addedFavoritesArray));
+      addedFavoritesArray?.push(...favoriteItems, card);
+      localStorage?.setItem("favorites", JSON?.stringify(addedFavoritesArray));
      
     } 
 

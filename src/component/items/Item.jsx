@@ -1,6 +1,13 @@
-import React from 'react';
-
+import React, { useState } from 'react';
+import swal from 'sweetalert';
+let s =0;
 const Item = ({card}) => {
+const [pricee ,setPrice] = useState([])
+const [click,setClick] = useState(false)
+  const handleClick = (card) =>{
+
+     swal(`Thank you for your donation`)
+  }
   const {
     card_bg,
     catagory,
@@ -30,7 +37,8 @@ const Item = ({card}) => {
             {description}
           </p>
           <h2>${price}.00</h2>
-          <button className='w-fit p-2' style={{background:text,color:'white'}}>View Details</button>
+          <button onClick ={()=>handleClick(card)} className='w-fit p-2' style={{background:text,color:'white'}}>View Details</button>
+       
         </div>
       </div>
     </div>
